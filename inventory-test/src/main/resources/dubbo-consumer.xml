@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--消费方应用名 -->
+    <dubbo:application name="dubbo-consumer"/>
+    <!--消费端的缺省配置-->
+    <dubbo:consumer check="false" timeout="100"/>
+    <!--填写zk注册中心的地址 -->
+    <dubbo:registry group="newretaildev" protocol="zookeeper" address="zkqa1.ops.com:2181,zkqa2.ops.com:2181,zkqa3.ops.com:2181"/>
+    <!--引用服务提供接口的路径 -->
+    <dubbo:reference id="EntityInventoryBAService" interface="com.newretail.logisticscenter.inventorycenter.service.EntityInventoryBAService"  version="1.0.0.dev"/>
+    <dubbo:reference id="AddressbaseService" interface="com.newretail.logisticscenter.addressbasecenter.client.service.AddressbaseService"  version="1.0.0.dev"/>
+    <dubbo:reference id="InventoryWriteBAService" interface="com.newretail.logisticscenter.inventorycenter.service.InventoryWriteBAService"  version="1.0.0.dev"/>
+    <dubbo:reference id="CustomInventoryBAService" interface="com.newretail.logisticscenter.inventorycenter.service.CustomInventoryBAService"  version="1.0.0.dev"/>
+    <dubbo:reference id="InventoryReadBAService" interface="com.newretail.logisticscenter.inventorycenter.service.InventoryReadBAService"  version="1.0.0.dev"/>
+
+</beans>
